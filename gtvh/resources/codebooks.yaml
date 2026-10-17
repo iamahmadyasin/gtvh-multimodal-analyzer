@@ -1,0 +1,183 @@
+schema_version: "3.1.0"
+
+codebooks:
+
+  status:
+    items:
+      - {code: complete}
+      - {code: needs_review}
+
+  confidence:
+    items:
+      - {code: high, definition: clear evidence and a stable category}
+      - {code: medium, definition: a defensible interpretation with a genuine boundary issue}
+      - {code: low, definition: tentative or materially incomplete}
+
+  text_status:
+    items:
+      - {code: readable}
+      - {code: partial}
+      - {code: unreadable}
+      - {code: none}
+
+  reference_kind:
+    items:
+      - {code: person}
+      - {code: historical}
+      - {code: artwork}
+      - {code: pop_culture}
+      - {code: news_event}
+      - {code: format_parody}
+      - {code: other}
+
+  reference_status:
+    items:
+      - {code: identified}
+      - {code: unresolved}
+
+  so_abstract:
+    items:
+      - code: actual_non_actual
+        definition: >-
+          The actual situation in which the cartoon is set, or in which its characters find themselves,
+          vs a non-actual, non-existing situation that is incompatible with that setting. Diagnostic: both
+          "it is the case that A" and "it is not the case that B" can be filled with opposing propositions
+          about the characters or the setting. The non-actual script may exist externally, alongside the
+          actual one (e.g. a character presented as something they are not), or be brought about by a
+          character (e.g. a false claim that would be a lie in bona-fide communication).
+      - code: normal_abnormal
+        definition: >-
+          The normal, expected state of affairs vs an abnormal, unexpected one. The norm is the expectation
+          carried by the script for that role, institution, or situation (e.g. a senator is expected to be a
+          gentleman), relative to the cartoon's context and not to your moral endorsement.
+      - code: possible_impossible
+        definition: >-
+          A possible, plausible situation vs a fully or partially impossible one, or a much less plausible
+          one. The opposed situation may be outright impossible (e.g. selling an illness) or only highly
+          implausible (e.g. a lady calling her chauffeur "darling").
+
+  si_modality:
+    items:
+      - {code: image}
+      - {code: text}
+      - {code: both}
+      - {code: uncertain}
+
+  orientation:
+    items:
+      - {code: first_person, definition: "The cartoonist is included in the focus, including self-directed professional humor where inclusion is supported. A character speaking in the first person is not enough."}
+      - {code: second_person, definition: "The reader or addressee is the focus. Addressing a reader does not imply aggression."}
+      - {code: third_party, definition: "A person, group, institution, practice, belief, or object other than cartoonist or reader."}
+      - {code: setting, definition: "The state of affairs is the focus, without a more specific party being implicated."}
+      - {code: uncertain, definition: "The focus cannot be established adequately."}
+
+  aggression:
+    items:
+      - {code: "yes"}
+      - {code: "no"}
+      - {code: uncertain}
+
+  target_role:
+    items:
+      - {code: primary}
+      - {code: secondary}
+      - {code: co_primary}
+
+  target_type:
+    items:
+      - {code: person, definition: "An individual targeted as an individual."}
+      - {code: group, definition: "A collectivity defined by shared role or membership, including a profession."}
+      - {code: institution, definition: "An organized body such as a company, university, ministry, or media institution. A named organization is an institution."}
+      - {code: ideological, definition: "A practice, belief, assumption, worldview, or abstract ideal, rather than a person, group, or institution. Use this also for a specific product, technology, or behavior criticized as a human practice."}
+
+  layout:
+    items:
+      - {code: single_panel, definition: "One unified scene", panels: "1"}
+      - {code: two_panel, definition: "Two discrete panels", panels: "2"}
+      - {code: three_panel, definition: "Three discrete panels", panels: "3"}
+      - {code: four_panel, definition: "Four discrete panels", panels: "4"}
+      - {code: multi_panel, definition: "Five or more panels", panels: "≥ 5"}
+      - {code: split_screen, definition: "One composite panel with a deliberate internal division", panels: "1"}
+      - {code: other, definition: "A known different arrangement", panels: "explain in `difficulty_notes`"}
+      - {code: uncertain, definition: "Not recoverable", panels: "usually null"}
+
+  device:
+    items:
+      - {code: dialogue, verbal: true, definition: "Two or more represented conversational turns, including a depicted chat exchange."}
+      - {code: one_sided_address, verbal: true, definition: "One represented turn directed to a co-present, specific interlocutor."}
+      - {code: monologue, verbal: true, definition: "One speaker's statement without a represented exchange, including address to an implied broadcast audience."}
+      - {code: caption, verbal: true, definition: "An external caption or title materially organizes the humorous delivery."}
+      - {code: label, verbal: true, definition: "Identifying text attached to a figure or object materially organizes meaning."}
+      - {code: signage, verbal: true, definition: "An in-scene sign, screen, banner, or headline materially delivers humor."}
+      - {code: parody_format, definition: "Imitation of a recognizable format organizes the cartoon."}
+      - {code: before_after, definition: "Earlier and later states are explicitly or clearly contrasted."}
+      - {code: visual_allegory, definition: "A dominant symbolic or figurative scene organizes the delivery."}
+      - {code: sequential, definition: "Action develops across successive panels or scene units."}
+      - {code: wordless, definition: "No relevant readable verbal material, by design. Not the same as unreadable text. Incompatible with verbal devices."}
+      - {code: other, definition: "An identifiable organization outside this list; explain it."}
+
+  humour_distribution:
+    items:
+      - {code: punch_only, definition: "One instance, and it is a punch line."}
+      - {code: jab_only, definition: "One or more instances, none of them a punch line."}
+      - {code: both, definition: "Several instances: a final punch line plus at least one jab line."}
+      - {code: simultaneous, definition: "The opposition arises only from text and image taken together, and neither comes after the other in reading order (e.g. one utterance set against what the image shows)."}
+      - {code: uncertain, definition: "The distribution is unclear, or no SO was supplied."}
+
+  locus:
+    items:
+      - {code: verbal_only, definition: "Wording carries the opposition. The image supplies setting or incidental illustration only."}
+      - {code: visual_only, definition: "Pictorial information carries the opposition. Any writing is incidental to it."}
+      - {code: interaction, definition: "Words and image both substantively construct or develop the opposition. Enhancement counts; neither mode needs to be insufficient on its own."}
+      - {code: uncertain, definition: "The evidence does not allow a dependable decision. Requires `needs_review`."}
+
+  interaction_dynamic:
+    items:
+      - {code: enhancing, definition: "One mode amplifies a meaning substantially established by the other (e.g. intensity or scale)."}
+      - {code: complementary, definition: "Distinct, compatible information from both modes produces the fuller humorous interpretation."}
+      - {code: counterpointing, definition: "Contrasting perspectives or implications combine into an additional interpretation, without a directly incompatible assertion being central."}
+      - {code: contradictory, definition: "An apparent incompatibility between the verbal and the pictorial is central."}
+      - {code: uncertain, definition: "Interaction is clear but its subtype cannot be established."}
+
+  semiotic_mechanism:
+    items:
+      - {code: pun, definition: "Two relevant senses or forms of verbal material are exploited."}
+      - {code: exaggeration, definition: "Salient enlargement or intensification of quantity, scale, action, or quality."}
+      - {code: contradiction, definition: "Apparently incompatible claims or representations carry the humor."}
+      - {code: anachronism, definition: "Elements from incompatible historical periods are humorously combined."}
+      - {code: intertextual_allusion, definition: "Humor depends on a recognizable prior text, image, story, or cultural form."}
+      - {code: caricature, definition: "Exaggerated traits of a figure contribute to humorous characterization. Not merely any drawn face."}
+      - {code: visual_metaphor, definition: "A pictorial or multimodal cross-domain mapping. Requires at least one `metaphors` entry."}
+      - {code: neologism, definition: "A newly formed expression contributes to the humor."}
+      - {code: register_incongruity, definition: "A style or register mismatches the speaker, context, or subject."}
+      - {code: wordplay_in_image, definition: "Typography or pictorial arrangement materially realizes verbal play, beyond merely displaying a pun."}
+      - {code: analogy, definition: "A presented comparison is humorously significant. Code it as a realization device, not an LM analysis."}
+      - {code: metonymy, definition: "A related sign stands for an entity or domain (e.g. a logo for a company) and contributes to the humor."}
+      - {code: personification, definition: "A nonhuman entity receives human characteristics that contribute to the humor."}
+      - {code: other, definition: "An identifiable expressive device outside this list; explain it in the note."}
+
+  presupposition_category:
+    extensible: true
+    items:
+      - {code: general, definition: "Everyday conventions or knowledge; state the particular assumption."}
+      - {code: technology, definition: "Familiarity with technological tools, outputs, practices, or concepts."}
+      - {code: news_event, definition: "A particular datable event, only if identifiable from supplied or securely known context."}
+      - {code: historical, definition: "A historical figure, event, period, or convention."}
+      - {code: national_political, definition: "Country-specific institutions, political actors, or arrangements."}
+      - {code: pop_culture, definition: "Recognizable fictional characters, entertainment, or popular narratives."}
+      - {code: professional, definition: "Knowledge specific to an occupation or discipline."}
+      - {code: religious_cultural, definition: "Religious iconography, ritual, or culturally specific conventions."}
+      - {code: art_visual_tradition, definition: "Recognition of a specific artwork or established visual tradition."}
+      - {code: other, definition: "A specified background-knowledge requirement outside these categories."}
+
+  necessity:
+    items:
+      - {code: necessary, definition: "the central reading of a relevant SO cannot be recovered without it"}
+      - {code: enriching, definition: "it adds historical or cultural specificity"}
+
+  presupposition_basis:
+    items:
+      - {code: everyday_convention}
+      - {code: supplied_context}
+      - {code: domain_knowledge}
+      - {code: recognized_reference}

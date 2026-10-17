@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "GTVH Multimodal Analyzer: A Tool for Multimodal Analysis of Humorous Cartoons Using the General Theory of Verbal Humor"
+authors:
+  - family-names: "Yasin"
+    given-names: "Ahmad"
+version: "1.0.0"
+date-released: "2026-10-17"
+license: MIT
+repository-code: "https://github.com/iamahmadyasin/gtvh-multimodal-analyzer"
+url: "https://github.com/iamahmadyasin/gtvh-multimodal-analyzer"
+keywords:
+  - computational humor
+  - multimodal humor
+  - gtvh
+  - cartoons
+references:
+  - type: thesis
+    title: "Augmenting LLMs with General Theory of Verbal Humor for multimodal humor analysis"
+    authors:
+      - family-names: "Yasin"
+        given-names: "Ahmad"
+    year: 2025
+    thesis-type: "MPhil thesis"
+    institution:
+      name: "Government College University Faisalabad"

@@ -1,0 +1,173 @@
+definitions:
+  text: &text {type: string, minLength: 1}
+  opt_text: &opt_text {$nullable: {type: string, minLength: 1}}
+  text_list: &text_list {$array: {type: string, minLength: 1}}
+
+stages:
+
+  1:
+    $object:
+      schema_version: {$const: schema_version}
+      cartoon_id: *text
+      annotation_status: {$codes: status}
+      review_reasons: *text_list
+      difficulty_notes: *opt_text
+      shared_reading:
+        $object:
+          scene_description: *text
+          text_status: {$codes: text_status}
+          text_transcription: {$nullable: {type: string}}
+          text_translation: *opt_text
+          references:
+            $array:
+              $object:
+                kind: {$codes: reference_kind}
+                label: *text
+                basis: *text
+                status: {$codes: reference_status}
+                central: {type: boolean}
+      primary_opposition:
+        $nullable: &so
+          $object:
+            id: {type: string, pattern: "^so_[1-9][0-9]*$"}
+            concrete_opposition: &pair {type: string, pattern: "^[^/]+/[^/]+$"}
+            intermediate_label: *pair
+            abstract_code: {$nullable: {$codes: so_abstract}}
+            abstract_alternative: {$nullable: {$codes: so_abstract}}
+            justification: *text
+            confidence: {$codes: confidence}
+      additional_oppositions: {$array: *so}
+
+  2:
+    $object:
+      schema_version: {$const: schema_version}
+      cartoon_id: *text
+      annotation_status: {$codes: status}
+      review_reasons: *text_list
+      difficulty_notes: *opt_text
+      situation:
+        $object:
+          summary: *opt_text
+          inferred_context: *opt_text
+          modality: {$codes: si_modality}
+          confidence: {$codes: confidence}
+      orientations:
+        minItems: 1
+        $array:
+          $object:
+            id: {type: string, pattern: "^orientation_[1-9][0-9]*$"}
+            orientation: {$codes: orientation}
+            referent: *text
+            aggression: {$codes: aggression}
+            basis: *text
+            confidence: {$codes: confidence}
+      targets:
+        $array:
+          $object:
+            orientation_id: *text
+            role: {$codes: target_role}
+            entity: *text
+            target_type: {$codes: target_type}
+            criticized_attribute: *text
+            basis: *text
+            confidence: {$codes: confidence}
+      narrative_strategy:
+        $object:
+          panel_count: {$nullable: {type: integer, minimum: 1}}
+          layout: {$codes: layout}
+          devices:
+            $array:
+              $object:
+                code: {$codes: device}
+                note: *text
+          humour_distribution: {$codes: humour_distribution}
+          distribution_note: *text
+          confidence: {$codes: confidence}
+      evidence_corrections: *text_list
+
+  3:
+    $object:
+      schema_version: {$const: schema_version}
+      cartoon_id: *text
+      annotation_status: {$codes: status}
+      review_reasons: *text_list
+      difficulty_notes: *opt_text
+      realizations:
+        $array:
+          $object:
+            so_id: *text
+            locus: {$codes: locus}
+            interaction_dynamic: {$nullable: {$codes: interaction_dynamic}}
+            interaction_alternative: {$nullable: {$codes: interaction_dynamic, $except: [uncertain]}}
+            note: *text
+            semiotic_mechanisms:
+              $array:
+                $object:
+                  code: {$codes: semiotic_mechanism}
+                  note: *text
+            metaphors:
+              $array:
+                $object:
+                  target_domain: *text
+                  source_domain: *text
+                  mapped_property: *text
+                  basis: *text
+            confidence: {$codes: confidence}
+      presuppositions:
+        $array:
+          $object:
+            category: {$codes: presupposition_category}
+            specific_knowledge: *text
+            necessity: {$codes: necessity}
+            basis: {$codes: presupposition_basis}
+            confidence: {$codes: confidence}
+      unresolved_references:
+        $array:
+          $object:
+            description: *text
+            central: {type: boolean}
+      theme:
+        $object:
+          primary: *opt_text
+          secondary: *opt_text
+          note: *text
+          confidence: {$codes: confidence}
+      evidence_corrections: *text_list
+      upstream_issues: *text_list
+
+  4:
+    $object:
+      schema_version: {$const: schema_version}
+      cartoon_id: *text
+      annotation_status: {$codes: status}
+      review_reasons: *text_list
+      oppositions:
+        $array:
+          $object:
+            so_id: *text
+            category: {$codes: opposition_category}
+            proposed_category: *opt_text
+            confidence: {$codes: confidence}
+      targets:
+        $array:
+          $object:
+            entity: *text
+            category: {$codes: target_category}
+            proposed_category: *opt_text
+            confidence: {$codes: confidence}
+      theme:
+        $object:
+          primary: {$nullable: &theme_code {$object: {category: {$codes: theme_category}, proposed_category: *opt_text}}}
+          secondary: {$nullable: *theme_code}
+          confidence: {$codes: confidence}
+      note: *opt_text
+
+  codebook:
+    $object:
+      categories:
+        $array:
+          $object:
+            code: {type: string, pattern: "^[a-z][a-z0-9]*(_[a-z0-9]+)*$"}
+            definition: *text
+            includes: *text_list
+      notes: *opt_text

@@ -1,0 +1,234 @@
+- cartoon_id: calibration_01
+  title: presidential-candidate queues
+  image_description: >-
+    Two men stand among large queues in central Athens, with the Acropolis in the background and an
+    exaggerated crowd. Speech: "Here, dear sir, is the queue for the candidates for the Presidency of the
+    [Greek] Democracy. The queue for getting a holiday bank loan is right next to this one!"
+  metadata:
+    cartoon_id: calibration_01
+    date: null
+    cartoonist: null
+    publication: null
+    context_notes: >-
+      Speech is given in English translation. The cartoon appeared during media speculation that
+      unusually many people were prospective candidates for the 2005 Greek presidency. Queuing for
+      holiday bank loans was a recognizable seasonal practice in Greece at the time.
+  stages:
+    1:
+      annotation_status: complete
+      review_reasons: []
+      difficulty_notes: null
+      shared_reading:
+        scene_description: Two men stand among large queues in central Athens, with the Acropolis in the background and an exaggerated crowd.
+        text_status: readable
+        text_transcription: "Here, dear sir, is the queue for the candidates for the Presidency of the [Greek] Democracy. The queue for getting a holiday bank loan is right next to this one!"
+        text_translation: null
+        references:
+          - kind: news_event
+            label: Media speculation about candidates for the 2005 Greek presidency
+            basis: Stated in the supplied context; not inferred from a date.
+            status: identified
+            central: false
+      primary_opposition:
+        id: so_1
+        concrete_opposition: a limited number of candidates seek the Greek presidency/as many candidates seek it as people seeking holiday bank loans
+        intermediate_label: few/many
+        abstract_code: possible_impossible
+        abstract_alternative: null
+        justification: The presidency normally attracts a small candidate field, but the speech equates it with the huge crowd seeking holiday loans; the implausible scale carries the contrast.
+        confidence: high
+      additional_oppositions: []
+    2:
+      annotation_status: complete
+      review_reasons: []
+      difficulty_notes: null
+      situation:
+        summary: a huge crowd forming queues in central Athens
+        inferred_context: One queue is identified as presidential candidates and the other as holiday-loan applicants.
+        modality: both
+        confidence: high
+      orientations:
+        - id: orientation_1
+          orientation: third_party
+          referent: candidates for the Greek presidency
+          aggression: "yes"
+          basis: The huge candidate queue ridicules the excessive candidate field.
+          confidence: high
+        - id: orientation_2
+          orientation: third_party
+          referent: people seeking holiday bank loans
+          aggression: "yes"
+          basis: Placing holiday-loan applicants in an equally huge queue ridicules their large number as well.
+          confidence: high
+      targets:
+        - orientation_id: orientation_1
+          role: primary
+          entity: candidates for the Greek presidency
+          target_type: group
+          criticized_attribute: excessive numbers of prospective candidates
+          basis: Presidential candidacy is pictured as an overcrowded queue.
+          confidence: high
+        - orientation_id: orientation_2
+          role: secondary
+          entity: holiday bank-loan applicants
+          target_type: group
+          criticized_attribute: the excessive number of people seeking holiday loans
+          basis: The comparison presents the loan queue as just as excessive as the candidate queue.
+          confidence: high
+      narrative_strategy:
+        panel_count: 1
+        layout: single_panel
+        devices:
+          - code: one_sided_address
+            note: Only one conversational turn addressed to a co-present interlocutor is represented.
+        humour_distribution: simultaneous
+        distribution_note: The utterance and the crowded scene present the contrast together; there is no defensible final punch point.
+        confidence: medium
+      evidence_corrections: []
+    3:
+      annotation_status: complete
+      review_reasons: []
+      difficulty_notes: null
+      realizations:
+        - so_id: so_1
+          locus: interaction
+          interaction_dynamic: complementary
+          interaction_alternative: enhancing
+          note: The utterance identifies the two kinds of queues and the image supplies their exaggerated scale.
+          semiotic_mechanisms:
+            - code: exaggeration
+              note: The overcrowded scene magnifies the number of candidates.
+            - code: analogy
+              note: The verbal and visual presentation compares candidate queues with holiday-loan queues.
+          metaphors: []
+          confidence: high
+      presuppositions:
+        - category: national_political
+          specific_knowledge: The presidency is a political office normally associated with a limited field of candidates.
+          necessity: necessary
+          basis: domain_knowledge
+          confidence: high
+        - category: news_event
+          specific_knowledge: Media speculation before the 2005 Greek presidential election suggested unusually many candidates.
+          necessity: enriching
+          basis: supplied_context
+          confidence: high
+        - category: religious_cultural
+          specific_knowledge: Queuing for holiday bank loans was a recognizable seasonal practice in Greece.
+          necessity: enriching
+          basis: supplied_context
+          confidence: medium
+      unresolved_references: []
+      theme:
+        primary: electoral politics
+        secondary: null
+        note: Political satire about an overcrowded candidate field for the presidency.
+        confidence: high
+      evidence_corrections: []
+      upstream_issues: []
+
+- cartoon_id: calibration_02
+  title: tsunami news report
+  image_description: >-
+    A television journalist reports from a tsunami-stricken area in Southeast Asia while the image shows
+    destruction and local people struggling to survive. Speech: "Dear spectators, the tragedy has been
+    avoided! No tourist is found among the victims of the lethal earthquake!"
+  metadata:
+    cartoon_id: calibration_02
+    date: "2004-12-27"
+    cartoonist: null
+    publication: null
+    context_notes: Speech is given in English translation. The cartoon responds to the December 2004 Indian Ocean tsunami.
+  stages:
+    1:
+      annotation_status: complete
+      review_reasons: []
+      difficulty_notes: null
+      shared_reading:
+        scene_description: A television journalist reports from a tsunami-stricken area in Southeast Asia while the image shows destruction and local people struggling to survive.
+        text_status: readable
+        text_transcription: "Dear spectators, the tragedy has been avoided! No tourist is found among the victims of the lethal earthquake!"
+        text_translation: null
+        references:
+          - kind: news_event
+            label: December 2004 Indian Ocean tsunami
+            basis: Stated in the supplied context and consistent with the publication date.
+            status: identified
+            central: false
+      primary_opposition:
+        id: so_1
+        concrete_opposition: a tragedy has struck local people/no tragedy has occurred because no tourists were harmed
+        intermediate_label: life/death
+        abstract_code: actual_non_actual
+        abstract_alternative: null
+        justification: The reporter's claim that no tragedy occurred because no tourists died is contradicted by the visible deaths and suffering of local people.
+        confidence: medium
+      additional_oppositions: []
+    2:
+      annotation_status: complete
+      review_reasons: []
+      difficulty_notes: null
+      situation:
+        summary: journalist reporting from a disaster area
+        inferred_context: The scene invokes live television news reporting.
+        modality: both
+        confidence: high
+      orientations:
+        - id: orientation_1
+          orientation: third_party
+          referent: the news media represented by the journalist
+          aggression: "yes"
+          basis: The reporter treats local casualties as unimportant compared with tourist welfare.
+          confidence: high
+      targets:
+        - orientation_id: orientation_1
+          role: primary
+          entity: the news media
+          target_type: institution
+          criticized_attribute: disproportionate concern for tourists and disregard for local victims
+          basis: The journalist denies tragedy despite the depicted local devastation.
+          confidence: high
+      narrative_strategy:
+        panel_count: 1
+        layout: single_panel
+        devices:
+          - code: monologue
+            note: One reporter speaks to an implied broadcast audience.
+        humour_distribution: simultaneous
+        distribution_note: The reporter's words and the visible devastation present the contrast together; there is no defensible final punch point.
+        confidence: medium
+      evidence_corrections: []
+    3:
+      annotation_status: complete
+      review_reasons: []
+      difficulty_notes: null
+      realizations:
+        - so_id: so_1
+          locus: interaction
+          interaction_dynamic: contradictory
+          interaction_alternative: counterpointing
+          note: The verbal denial of tragedy conflicts with the visible disaster affecting local people.
+          semiotic_mechanisms:
+            - code: contradiction
+              note: The denial of tragedy is juxtaposed with visible destruction and suffering.
+          metaphors: []
+          confidence: high
+      presuppositions:
+        - category: general
+          specific_knowledge: Fatal destruction and suffering count as tragedy irrespective of whether the victims are tourists.
+          necessity: necessary
+          basis: everyday_convention
+          confidence: high
+        - category: news_event
+          specific_knowledge: The scene responds to the December 2004 Indian Ocean tsunami.
+          necessity: enriching
+          basis: supplied_context
+          confidence: high
+      unresolved_references: []
+      theme:
+        primary: media coverage of disasters
+        secondary: null
+        note: The cartoon satirizes news coverage that values tourists' lives over local victims.
+        confidence: high
+      evidence_corrections: []
+      upstream_issues: []
