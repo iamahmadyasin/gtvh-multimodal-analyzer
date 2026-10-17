@@ -276,7 +276,6 @@ class MainWindow(QMainWindow):
         from .pages import AnnotatePage, CartoonsPage, CodebookPage, ResultsPage, ReviewPage
         self.setWindowTitle("GTVH Multimodal Analyzer")
         self.setWindowIcon(QIcon(str(HERE / "icon.png")))
-        self.resize(1250, 820)
         self.settings = QSettings("gtvh-multimodal-analyzer", "GTVH Multimodal Analyzer")
         self.project = None
 
@@ -434,6 +433,9 @@ def main(project=None):
     w = MainWindow()
     if project:
         w.load_project(project)
+    screen = app.primaryScreen().availableGeometry()
+    w.resize(min(960, int(screen.width() * 0.6)), min(640, int(screen.height() * 0.7)))
+    w.move(screen.center() - w.rect().center())
     w.show()
     w.check_updates()
     return app.exec()
