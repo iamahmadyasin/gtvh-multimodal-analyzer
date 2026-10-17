@@ -211,7 +211,7 @@ GTVH Multimodal Analyzer was designed and developed by **Ahmad Yasin**, as part 
 
 - **Dr. Asim Mahmood**, Dean of the Faculty of Arts and Social Sciences, Government College University Faisalabad, supervised the research on which this tool is based.
 - **Prof. Salvatore Attardo**, East Texas A&M University, kindly answered questions by email during the development of the framework.
-- **Nasir**, a doctoral researcher working on multimodal humour analysis, gave advice and helpful conversations along the way.
+- **Nasir Saim**, a doctoral researcher working on multimodal humour analysis, gave advice and helpful conversations along the way.
 
 ## Associated Research
 

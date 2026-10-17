@@ -16,7 +16,7 @@ import threading
 from . import __version__
 from .framework import STAGES, CODING_DIMENSIONS
 from .project import Project, ProjectError
-from .providers import PROVIDERS, ProviderError, delete_key, get_key, make_provider, set_key
+from .providers import PROVIDERS, ProviderError, delete_key, get_key, load_env_file, make_provider, set_key
 
 USAGE = """Command line: gtvh <command> [options]. Run `gtvh <command> -h` for details.
 
@@ -294,6 +294,7 @@ def build_parser():
 
 def main(argv=None):
     args = build_parser().parse_args(argv)
+    load_env_file(getattr(args, "project", None))
     try:
         return args.fn(args) or 0
     except (ProjectError, ProviderError, ValueError) as e:

@@ -4,3 +4,4 @@ build/
 app/
 literature/
 projects/
+.env

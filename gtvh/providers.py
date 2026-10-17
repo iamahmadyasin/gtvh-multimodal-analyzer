@@ -58,7 +58,29 @@ class Response:
     meta: dict = field(default_factory=dict)
 
 
+_ENV_FILE_VARS = {}
+
+
+def load_env_file(start=None):
+    folder = Path(start or Path.cwd()).resolve()
+    for d in (folder, *folder.parents):
+        f = d / ".env"
+        if f.is_file():
+            for line in f.read_text(encoding="utf-8-sig").splitlines():
+                key, sep, value = line.strip().removeprefix("export ").partition("=")
+                key, value = key.strip(), value.strip().strip('"').strip("'")
+                if sep and key and value and not line.lstrip().startswith("#") and key not in os.environ:
+                    os.environ[key] = value
+                    _ENV_FILE_VARS[key] = f
+            return f
+    return None
+
+
 def get_key(provider):
+    for var in PROVIDERS[provider]["env"]:
+        if os.environ.get(var):
+            where = _ENV_FILE_VARS.get(var)
+            return os.environ[var], f"{where} ({var})" if where else f"environment variable {var}"
     try:
         import keyring
         k = keyring.get_password(KEYRING_SERVICE, provider)
@@ -66,9 +88,6 @@ def get_key(provider):
             return k, "credential store"
     except Exception:
         pass
-    for var in PROVIDERS[provider]["env"]:
-        if os.environ.get(var):
-            return os.environ[var], f"environment variable {var}"
     return None, None
 
 
