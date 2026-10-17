@@ -87,7 +87,8 @@ python -m venv .venv
 .venv\Scripts\activate                       # macOS/Linux: source .venv/bin/activate
 pip install -e .
 
-gtvh keys set anthropic                      # or openai, gemini; stored in the OS credential store
+copy .env.example .env                       # macOS/Linux: cp .env.example .env
+# edit .env and paste your Anthropic, OpenAI and/or Gemini API key
 
 gtvh init my-study --name "My study"
 cd my-study
@@ -128,9 +129,11 @@ Other commands:
 | `gtvh export`, `gtvh compare --runs A B` | Excel workbook per run; agreement between runs |
 | `gtvh review sample\|summary --run RUN` | random review sample; review progress |
 | `gtvh codebook draft\|induce\|accept` | build the Stage 4 codebook |
-| `gtvh keys set\|delete\|status`, `gtvh models PROVIDER` | API keys; available models |
+| `gtvh keys status`, `gtvh models PROVIDER` | where each API key is read from; available models |
 
 Commands act on the project in the current folder; use `-p FOLDER` for another. `gtvh COMMAND -h` lists every option.
+
+API keys are read from `.env` in the project folder or any folder above it, such as the repository root, or from environment variables. `gtvh keys set PROVIDER` stores a key in the operating system's credential store instead.
 
 ## Annotation Stages
 
@@ -185,6 +188,7 @@ gtvh-multimodal-analyzer/
 │   ├── build.ps1             # builds the portable desktop version
 │   ├── gtvh.spec             # PyInstaller specification
 │   └── launch.py             # entry point of the desktop version
+├── .env.example              # API key template; copy it to .env
 ├── CITATION.cff              # software citation
 ├── LICENSE
 ├── Theory.md                 # theoretical framework and references
@@ -211,7 +215,7 @@ GTVH Multimodal Analyzer was designed and developed by **Ahmad Yasin**, as part 
 
 - **Dr. Asim Mahmood**, Dean of the Faculty of Arts and Social Sciences, Government College University Faisalabad, supervised the research on which this tool is based.
 - **Prof. Salvatore Attardo**, East Texas A&M University, kindly answered questions by email during the development of the framework.
-- **Nasir Saim**, a doctoral researcher working on multimodal humour analysis, gave advice and helpful conversations along the way.
+- **Nasir Saim**, a doctoral researcher in GCUF working on multimodal humour analysis, gave advice and helpful conversations along the way.
 
 ## Associated Research
 
