@@ -14,68 +14,11 @@ To request a copy, email me at [iamahmadyasinedu@gmail.com](mailto:iamahmadyasin
 
 Each cartoon passes through three annotation stages, each a separate model call with its own prompt. Every output is checked before it is saved. You then review the annotations. An optional fourth stage codes the free-text labels into the categories of your codebook for corpus analysis.
 
-```mermaid
-flowchart TB
-    images[/"cartoon images in images/"/]:::file
-    meta[/"metadata.csv, optional<br/>gtvh metadata"/]:::file
+<p align="center">
+  <img src="docs/pipeline.svg" alt="Annotation workflow: cartoon images pass through three model-based GTVH stages and validation into the annotation store, which feeds human review, optional Stage 4 corpus coding, and the results (Excel workbook and inter-run agreement)." width="100%">
+</p>
 
-    subgraph S1["1–3 · Annotation · gtvh annotate"]
-        direction TB
-        st1["Stage 1 · Script Opposition<br/>concrete, intermediate, abstract<br/>stage1.md"]:::ai
-        st2["Stage 2 · Situation, Target,<br/>Narrative Strategy<br/>stage2.md"]:::ai
-        st3["Stage 3 · Language/Semiotic Strategy,<br/>presuppositions, theme<br/>stage3.md"]:::ai
-        chk["Checks against schemas and rules<br/>a failed output is retried"]:::code
-        st1 --> st2
-        st1 --> st3
-        st1 --> chk
-        st2 --> chk
-        st3 --> chk
-    end
-
-    runs[("runs/run/cartoon/*.json")]:::file
-
-    subgraph S2["Your review · desktop app"]
-        direction TB
-        rev["Accept or correct each stage;<br/>random review sample"]:::human
-    end
-
-    adj[("adjudicated/")]:::file
-
-    subgraph S3["4 · Corpus coding, optional"]
-        direction TB
-        cb["Codebook: written, drafted from research<br/>questions, or induced from a run<br/>gtvh codebook"]:::ai
-        st4["Stage 4 · oppositions, targets, themes<br/>into codebook categories<br/>stage4.md"]:::ai
-        cb --> st4
-    end
-
-    subgraph S4["Results"]
-        direction LR
-        xlsx["Excel workbook<br/>gtvh export"]:::code
-        agree["Agreement between runs<br/>gtvh compare"]:::code
-    end
-
-    images --> st1
-    meta -. context, if switched on .-> st1
-    chk --> runs
-    runs --> rev
-    rev --> adj
-    runs --> cb
-    st4 --> runs
-    runs --> xlsx
-    runs --> agree
-    adj --> agree
-
-    classDef ai fill:#fff3b8,stroke:#9a7400,color:#151514
-    classDef code fill:#ffffff,stroke:#67635c,color:#151514
-    classDef human fill:#ffdcec,stroke:#b0186e,color:#151514
-    classDef file fill:#f5f4f1,stroke:#9b978f,color:#151514,stroke-dasharray:4 3
-    style S1 fill:#fafaf8,stroke:#d6d3cc,color:#151514
-    style S2 fill:#fafaf8,stroke:#d6d3cc,color:#151514
-    style S3 fill:#fafaf8,stroke:#d6d3cc,color:#151514
-    style S4 fill:#fafaf8,stroke:#d6d3cc,color:#151514
-```
-
-**Key:** yellow boxes call the model (and cost tokens); white boxes are plain code (free, no API); the pink box is your manual step; dashed boxes are files. A codebook written by hand needs no model call.
+Grey boxes call the model and cost tokens; white boxes are plain code; the double-bordered box is your manual step. A codebook written by hand needs no model call. The figure is drawn in TikZ ([docs/pipeline.tex](docs/pipeline.tex)) and can be reused in a paper.
 
 ## Quick start
 
